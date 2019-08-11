@@ -34,9 +34,10 @@ class Employee
         self.all.select {|employee| employee.salary > salary}
     end
 
-    def self.find_by_department(department_name) #takes in string
+    def self.find_by_department(department_name) #DONE
         #returns FIRST employee whose manager is working in that department
         #find - but returns a boolean
+        self.all.find {|employee| employee.manager_name.department == department_name}
 
     end
 
