@@ -8,7 +8,6 @@ class Manager
         @name = name
         @department = department #string
         @age = age #Fixnum (will later require float for avg_age)
-        @employees = []
         @@all << self
     end
 
@@ -25,7 +24,7 @@ class Manager
     end
 
     def employees
-        @employees
+        Employee.all.select {|employee| employee.manager_name == self}
     end
 
     def self.all
@@ -34,12 +33,10 @@ class Manager
 
     ###methods
 
-    def hire_employee(employee_name, salary)
+    def hire_employee(employee_name, salary) #DONE
         #adds that employee to the list of employees this manager oversees
         #create employees inside of manager (Employee BELONGS TO Manager)
-        new_employee = Employee.new(employee_name, salary)  #don't understand why this doesn't work. 
-        new_employee.manager_name = self
-        self.employees << new_employee
+        new_employee = Employee.new(employee_name, salary, manager_name = self) 
     end
 
     def self.all_departments  #DONE

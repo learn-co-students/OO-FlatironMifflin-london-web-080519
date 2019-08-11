@@ -3,7 +3,7 @@ class Employee
     attr_accessor :manager_name
     @@all = []
 
-    def initialize(name, salary)
+    def initialize(name, salary, manager_name)
         @name = name
         @salary = salary
         @manager_name = manager_name
@@ -19,7 +19,7 @@ class Employee
     end
 
     def manager_name
-        @manager_name = Manager.all.select {|employee| employees.name == self }
+        @manager_name
     end
 
     def self.all
@@ -28,7 +28,7 @@ class Employee
 
     ###methods
 
-    def self.paid_over(salary) #takes in fixnum
+    def self.paid_over(salary) #DONE
         #return array of all employees whose salaries are OVER that amount.
         #select
         self.all.select {|employee| employee.salary > salary}
