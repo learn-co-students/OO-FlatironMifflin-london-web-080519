@@ -19,7 +19,7 @@ class Employee
     end
 
     def manager_name
-        @manager_name
+        @manager_name = Manager.all.select {|employee| employees.name == self }
     end
 
     def self.all
@@ -31,7 +31,7 @@ class Employee
     def self.paid_over(salary) #takes in fixnum
         #return array of all employees whose salaries are OVER that amount.
         #select
-
+        self.all.select {|employee| employee.salary > salary}
     end
 
     def self.find_by_department(department_name) #takes in string
@@ -43,6 +43,7 @@ class Employee
     def tax_bracket
         #return array of all the employees whose salaries are +/- 1000 of employee who invoked the method
         #filter
+        @@all.filter {|employee| employee.salary > self.salary }
     end
 
 

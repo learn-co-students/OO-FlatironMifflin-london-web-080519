@@ -37,16 +37,23 @@ class Manager
     def hire_employee(employee_name, salary)
         #adds that employee to the list of employees this manager oversees
         #create employees inside of manager (Employee BELONGS TO Manager)
-        Employee.new(employee_name, salary)
-        @employees << employee_name
+        new_employee = Employee.new(employee_name, salary)  #don't understand why this doesn't work. 
+        new_employee.manager_name = self
+        self.employees << new_employee
     end
 
-    def self.all_departments
+    def self.all_departments  #DONE
         #return an array of all the department names every manager oversees
+        self.all.map {|manager| manager.department }
     end
 
-    def self.average_age
+    def self.average_age  #DONE
         #return float of average age of all the managers
+       # self.all.reduce(0) {|manager, num| manager.age + num}
+
+        all_ages = @@all.map {|manager| manager.age }
+        all_ages.reduce(0) {|age, base| age + base} / all_ages.length
+        #expect this to be 50
     end
 
 
