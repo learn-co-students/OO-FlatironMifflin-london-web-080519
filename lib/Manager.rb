@@ -4,7 +4,7 @@ class Manager
     attr_accessor :department, :employees
     @@all = []
 
-    def initialize(name)
+    def initialize(name, age, department)
         @name = name
         @department = department #string
         @age = age #Fixnum (will later require float for avg_age)
@@ -36,6 +36,8 @@ class Manager
 
     def hire_employee(employee_name, salary)
         #adds that employee to the list of employees this manager oversees
+        #create employees inside of manager (Employee BELONGS TO Manager)
+        Employee.new(employee_name, salary)
         @employees << employee_name
     end
 

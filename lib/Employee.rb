@@ -5,6 +5,7 @@ class Employee
 
     def initialize(name, salary)
         @name = name
+        @salary = salary
         @manager_name = manager_name
         @@all << self
     end
@@ -28,9 +29,9 @@ class Employee
     ###methods
 
     def self.paid_over(salary) #takes in fixnum
-
         #return array of all employees whose salaries are OVER that amount.
-        #reduce?
+        #select
+
     end
 
     def self.find_by_department(department_name) #takes in string
@@ -41,7 +42,7 @@ class Employee
 
     def tax_bracket
         #return array of all the employees whose salaries are +/- 1000 of employee who invoked the method
-        #filter? 
+        #filter
     end
 
 
