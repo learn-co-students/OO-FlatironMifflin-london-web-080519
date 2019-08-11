@@ -36,15 +36,24 @@ class Employee
 
     def self.find_by_department(department_name) #DONE
         #returns FIRST employee whose manager is working in that department
-        #find - but returns a boolean
+        #find
         self.all.find {|employee| employee.manager_name.department == department_name}
 
     end
 
-    def tax_bracket
+    def tax_bracket  #DONE
         #return array of all the employees whose salaries are +/- 1000 of employee who invoked the method
-        #filter
-        @@all.filter {|employee| employee.salary > self.salary }
+        ## salaries are 1000 more than the employee
+        ## or 1000 less than the employee
+        #select rather than filter (semantically makes more sense, does the same)
+
+        @@all.select {|employee| employee.salary <= self.salary + 1000 && employee.salary >= self.salary - 1000 && employee.name != self.name}
+
+        #if jim, should return dwight, pam (LESS) creed (MORE)
+        #if pam, should return dwight, jim
+
+        #if erin, should return angela (MORE), creed (LESS)
+        
     end
 
 

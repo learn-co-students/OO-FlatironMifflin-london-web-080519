@@ -49,8 +49,9 @@ class Manager
        # self.all.reduce(0) {|manager, num| manager.age + num}
 
         all_ages = @@all.map {|manager| manager.age }
-        all_ages.reduce(0) {|age, base| age + base} / all_ages.length
+        all_ages.reduce(0) {|age, base| age + base} / all_ages.length.to_f
         #expect this to be 50
+        #supposed to return a float
     end
 
 
